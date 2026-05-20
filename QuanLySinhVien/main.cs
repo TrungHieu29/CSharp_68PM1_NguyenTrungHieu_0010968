@@ -17,54 +17,35 @@ namespace QuanLySinhVien
             InitializeComponent();
         }
 
-        private void quảnLýSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
+        private void quảnLíSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UcQLSV qlsv = new UcQLSV();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(qlsv);
+        }
+
+        private void quanlisinhvien_Load(object sender, EventArgs e)
+        {
+            UcQLSV qlsv = new UcQLSV();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(qlsv);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void quảnLýLớpHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            UcQLLH qllh = new UcQLLH();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(qllh);
         }
     }
 }

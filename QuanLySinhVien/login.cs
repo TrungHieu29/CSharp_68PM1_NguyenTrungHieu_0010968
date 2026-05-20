@@ -38,7 +38,7 @@ namespace QuanLySinhVien
             String mssv = "0010968";
             if (textBox1.Text == email && textBox2.Text == mssv)
             {
-                quanlisinhvien qlsv = new quanlisinhvien();
+                main qlsv = new main();
                 MessageBox.Show("Đăng nhập thành công");
                 qlsv.Show();
                 this.Hide();
