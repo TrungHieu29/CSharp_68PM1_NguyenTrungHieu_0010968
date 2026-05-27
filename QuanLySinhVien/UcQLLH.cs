@@ -12,6 +12,7 @@ namespace QuanLySinhVien
 {
     public partial class UcQLLH : UserControl
     {
+        DatabaseDataContext db = new DatabaseDataContext();
         public UcQLLH()
         {
             InitializeComponent();
@@ -25,6 +26,12 @@ namespace QuanLySinhVien
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void UcQLLH_Load(object sender, EventArgs e)
+        {
+            List<LopHoc> dslh = db.LopHocs.ToList();
+            dgvQLLH.DataSource = dslh;
         }
     }
 }
