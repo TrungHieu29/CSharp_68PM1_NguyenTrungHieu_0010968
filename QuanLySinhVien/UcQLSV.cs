@@ -101,10 +101,62 @@ namespace QuanLySinhVien
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            txtMaSV.ReadOnly = false;
+
+            txtMaSV.Clear();
+            txtHoTen.Clear();
+
+            dtpNgaySinh.Value = DateTime.Now;
+
+            cboGioiTinh.SelectedIndex = -1;
+            cboMaLop.SelectedIndex = -1;
+
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+
+            string maSV = txtMaSV.Text.Trim();
+
+            if (string.IsNullOrEmpty(maSV))
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên từ danh sách để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn xóa sinh viên có mã {maSV} không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+
+                    SinhVien sv = db.SinhViens.SingleOrDefault(p => p.MaSV == maSV);
+
+                    if (sv != null)
+                    {
+
+                        db.SinhViens.DeleteOnSubmit(sv);
+
+                        db.SubmitChanges();
+
+                        MessageBox.Show("Xóa sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        btnRefresh_Click(sender, e);
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy sinh viên này trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Không thể xóa sinh viên này! Lỗi: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
