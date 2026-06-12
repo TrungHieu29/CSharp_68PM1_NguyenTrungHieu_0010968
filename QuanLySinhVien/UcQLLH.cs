@@ -252,5 +252,19 @@ namespace QuanLySinhVien
             trangHienTai = tongSoTrang;
             LoadData();
         }
+
+        private void btnListSV_Click(object sender, EventArgs e)
+        {
+            string maLopSelected = txtMaLop.Text.Trim();
+
+            if (string.IsNullOrEmpty(maLopSelected))
+            {
+                MessageBox.Show("Vui lòng chọn một lớp học từ danh sách để xem sinh viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            FrmDanhSachSinhVienLop frm = new FrmDanhSachSinhVienLop(maLopSelected);
+            frm.ShowDialog();
+        }
     }
 }

@@ -50,7 +50,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnListSV = new System.Windows.Forms.Button();
             this.txtTenLop = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -298,17 +298,18 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Tim kiếm (Mã ID/ Mã Lớp/ Tên lớp):";
             // 
-            // button10
+            // btnListSV
             // 
-            this.button10.BackColor = System.Drawing.Color.SteelBlue;
-            this.button10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button10.Location = new System.Drawing.Point(59, 1019);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(876, 98);
-            this.button10.TabIndex = 60;
-            this.button10.Text = "Xem danh sách sinh viên";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnListSV.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnListSV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListSV.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnListSV.Location = new System.Drawing.Point(59, 1019);
+            this.btnListSV.Name = "btnListSV";
+            this.btnListSV.Size = new System.Drawing.Size(876, 98);
+            this.btnListSV.TabIndex = 60;
+            this.btnListSV.Text = "Xem danh sách sinh viên";
+            this.btnListSV.UseVisualStyleBackColor = false;
+            this.btnListSV.Click += new System.EventHandler(this.btnListSV_Click);
             // 
             // txtTenLop
             // 
@@ -321,7 +322,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.btnListSV);
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPre);
@@ -369,7 +370,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnListSV;
         private System.Windows.Forms.TextBox txtTenLop;
     }
 }
