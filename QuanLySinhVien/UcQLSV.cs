@@ -14,6 +14,9 @@ namespace QuanLySinhVien
     public partial class UcQLSV : UserControl
     {
         DatabaseDataContext db = new DatabaseDataContext();
+        int trangHienTai = 1;      
+        int soDongTrenTrang = 10; 
+        int tongSoTrang = 1;      
         public UcQLSV()
         {
             InitializeComponent();
@@ -27,8 +30,23 @@ namespace QuanLySinhVien
 
         public void LoadData()
         {
-            List<SinhVien> dssv = db.SinhViens.ToList();
-            dgvQLSV.DataSource = dssv;
+            db = new DatabaseDataContext();
+
+            int tongSoDong = db.SinhViens.Count();
+
+            tongSoTrang = (int)Math.Ceiling((double)tongSoDong / soDongTrenTrang);
+            if (tongSoTrang == 0) tongSoTrang = 1;
+
+            if (trangHienTai > tongSoTrang) trangHienTai = tongSoTrang;
+
+            int soDongBoQua = (trangHienTai - 1) * soDongTrenTrang;
+
+            List<SinhVien> dssvPhanTrang = db.SinhViens
+                                             .Skip(soDongBoQua)   
+                                             .Take(soDongTrenTrang) 
+                                             .ToList();
+
+            dgvQLSV.DataSource = dssvPhanTrang;
         }
 
         public void LoadDSLH4CBX()
@@ -161,6 +179,33 @@ namespace QuanLySinhVien
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string tuKhoa = txtSearch.Text.Trim();
+
+            if (string.IsNullOrEmpty(tuKhoa))
+            {
+                LoadData();
+                return;
+            }
+
+            try
+            {
+                var ketQua = db.SinhViens.Where(sv => sv.MaSV.Contains(tuKhoa)
+                                                   || sv.HoTen.Contains(tuKhoa)
+                                                   || sv.MaLop.Contains(tuKhoa))
+                                         .ToList();
+
+                dgvQLSV.DataSource = ketQua;
+
+                if (ketQua.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy sinh viên nào phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tìm kiếm: " + ex.Message);
+            }
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -205,6 +250,36 @@ namespace QuanLySinhVien
             {
                 MessageBox.Show("Đã xảy ra lỗi khi sửa dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnPre_Click(object sender, EventArgs e)
+        {
+            if (trangHienTai > 1)
+            {
+                trangHienTai--;
+                LoadData(); 
+            }
+        }
+
+        private void btnPageFirst_Click(object sender, EventArgs e)
+        {
+            trangHienTai = 1;
+            LoadData(); 
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (trangHienTai < tongSoTrang)
+            {
+                trangHienTai++;
+                LoadData(); 
+            }
+        }
+
+        private void btnPageLast_Click(object sender, EventArgs e)
+        {
+            trangHienTai = tongSoTrang;
+            LoadData(); 
         }
     }
 }

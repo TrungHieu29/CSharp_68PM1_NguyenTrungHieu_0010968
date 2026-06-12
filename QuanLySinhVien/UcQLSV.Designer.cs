@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnPageLast = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.btnPageFirst = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -59,45 +59,49 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvQLSV)).BeginInit();
             this.SuspendLayout();
             // 
-            // button9
+            // btnPageLast
             // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(1978, 1029);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(135, 97);
-            this.button9.TabIndex = 49;
-            this.button9.Text = ">>";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnPageLast.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPageLast.Location = new System.Drawing.Point(1978, 1029);
+            this.btnPageLast.Name = "btnPageLast";
+            this.btnPageLast.Size = new System.Drawing.Size(135, 97);
+            this.btnPageLast.TabIndex = 49;
+            this.btnPageLast.Text = ">>";
+            this.btnPageLast.UseVisualStyleBackColor = true;
+            this.btnPageLast.Click += new System.EventHandler(this.btnPageLast_Click);
             // 
-            // button8
+            // btnNext
             // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(1847, 1029);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(135, 97);
-            this.button8.TabIndex = 48;
-            this.button8.Text = ">";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Location = new System.Drawing.Point(1847, 1029);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(135, 97);
+            this.btnNext.TabIndex = 48;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // button7
+            // btnPre
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(1157, 1029);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(135, 97);
-            this.button7.TabIndex = 47;
-            this.button7.Text = "<";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnPre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPre.Location = new System.Drawing.Point(1157, 1029);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(135, 97);
+            this.btnPre.TabIndex = 47;
+            this.btnPre.Text = "<";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
-            // button6
+            // btnPageFirst
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(1026, 1029);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(135, 97);
-            this.button6.TabIndex = 46;
-            this.button6.Text = "<<";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnPageFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPageFirst.Location = new System.Drawing.Point(1026, 1029);
+            this.btnPageFirst.Name = "btnPageFirst";
+            this.btnPageFirst.Size = new System.Drawing.Size(135, 97);
+            this.btnPageFirst.TabIndex = 46;
+            this.btnPageFirst.Text = "<<";
+            this.btnPageFirst.UseVisualStyleBackColor = true;
+            this.btnPageFirst.Click += new System.EventHandler(this.btnPageFirst_Click);
             // 
             // btnRefresh
             // 
@@ -333,10 +337,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnPageLast);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnPre);
+            this.Controls.Add(this.btnPageFirst);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnUpdate);
@@ -358,10 +362,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnPageLast;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPre;
+        private System.Windows.Forms.Button btnPageFirst;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnUpdate;
