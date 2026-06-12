@@ -114,6 +114,45 @@ namespace QuanLySinhVien
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
+            string maSV = txtMaSV.Text.Trim();
+
+            if (string.IsNullOrEmpty(maSV))
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên từ danh sách để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                SinhVien sv = db.SinhViens.SingleOrDefault(p => p.MaSV == maSV);
+
+                if (sv != null)
+                {
+
+                    sv.HoTen = txtHoTen.Text.Trim();
+                    sv.NgaySinh = dtpNgaySinh.Value;
+                    sv.GioiTinh = cboGioiTinh.Text;
+
+                    if (cboMaLop.SelectedValue != null)
+                    {
+                        sv.MaLop = cboMaLop.SelectedValue.ToString();
+                    }
+
+                    db.SubmitChanges();
+
+                    MessageBox.Show("Cập nhật thông tin sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy sinh viên có mã này trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi sửa dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
